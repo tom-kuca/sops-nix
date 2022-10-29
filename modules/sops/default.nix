@@ -131,9 +131,6 @@ let
         secretChanges = builtins.elem "secretChanges" cfg.log;
       };
     } // extraJson);
-    checkPhase = ''
-      ${sops-install-secrets-check}/bin/sops-install-secrets -check-mode=${if cfg.validateSopsFiles then "sopsfile" else "manifest"} "$out"
-    '';
   };
 
   manifest = manifestFor "" regularSecrets {};
